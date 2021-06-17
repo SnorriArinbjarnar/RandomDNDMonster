@@ -1,6 +1,7 @@
 
 const express = require('express');
 const axios = require('axios');
+const { getAllMonsters } = require('./utils/helpers');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -40,21 +41,12 @@ app.get("/api/monster_types", (req, res) => {
 app.get('/api/random_monster/:type', async(req, res) => {
     const type = req.params.type;
     const url = 'https://api.open5e.com/monsters/?type=' + type;
-    let getMonsters = null;
-    try {
-        getMonsters = await axios.get(url);
-    } catch (err){
-        console.error(err);
-    }
-    /* 
-        The DND rest api has pagination, here only the first results page
-        is used, a random number is picked for the first 50 results.  If I had more 
-        time I would have solved this by going through all the pages and splicing the JSON together
-        and then returning the correct index.
-    */
-    const count = getMonsters.data.results.length;
+    let monsters = await getAllMonsters(url);
+ 
+    const count = monsters.length;
     const randomNumb = Math.floor(Math.random() * count);
-    res.json(getMonsters.data.results[randomNumb]);
+    res.json(monsters[randomNumb]);
+
 })
 
 app.listen(PORT, () => {
