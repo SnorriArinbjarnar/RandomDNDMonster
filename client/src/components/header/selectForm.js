@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../button/button';
 /* 
     Here the dropdown list is populated with data passed down from App
 */
@@ -14,9 +15,7 @@ export default function SelectForm(props){
                 })}
                 </select>
             </div>
-            <button className="btn btn-primary" type="submit" data-testid="submit-btn">
-                            Search
-            </button>
+            <Button label="Get Monster" classes="btn btn-primary" type="submit" handleClick={null} />
         </form>
     );
 }
