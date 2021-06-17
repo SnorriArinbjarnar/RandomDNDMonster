@@ -33,6 +33,14 @@ app.get("/api/monster_types", (req, res) => {
     res.json(types)
 });
 
+app.get("/api/monster/:type", async(req, res) => {
+    const type = req.params.type;
+    const url = 'https://api.open5e.com/monsters/?type=' + type;
+    let monster = await getMonster(url);
+
+    res.json(monster)
+});
+
 /* 
     This endpoint returns a random monster of the given type,
     since the REST API used did not support giving random monster
@@ -41,11 +49,10 @@ app.get("/api/monster_types", (req, res) => {
 app.get('/api/random_monster/:type', async(req, res) => {
     const type = req.params.type;
     const url = 'https://api.open5e.com/monsters/?type=' + type;
-    let monsters = await getAllMonsters(url);
+    let monster = await getMonster(url);
  
-    const count = monsters.length;
-    const randomNumb = Math.floor(Math.random() * count);
-    res.json(monsters[randomNumb]);
+    
+    res.json(monster);
 
 })
 
