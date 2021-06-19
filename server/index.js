@@ -1,7 +1,7 @@
 
 const express = require('express');
 const axios = require('axios');
-const { getAllMonsters } = require('./utils/helpers');
+const { getRandomMonsterByUrl } = require('./utils/helpers');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -36,25 +36,10 @@ app.get("/api/monster_types", (req, res) => {
 app.get("/api/monster/:type", async(req, res) => {
     const type = req.params.type;
     const url = 'https://api.open5e.com/monsters/?type=' + type;
-    let monster = await getMonster(url);
+    let monster = await getRandomMonsterByUrl(url);
 
     res.json(monster)
 });
-
-/* 
-    This endpoint returns a random monster of the given type,
-    since the REST API used did not support giving random monster
-    I had to make the logic for that.
-*/
-app.get('/api/random_monster/:type', async(req, res) => {
-    const type = req.params.type;
-    const url = 'https://api.open5e.com/monsters/?type=' + type;
-    let monster = await getMonster(url);
- 
-    
-    res.json(monster);
-
-})
 
 app.listen(PORT, () => {
     console.log('Server listening on ', PORT);

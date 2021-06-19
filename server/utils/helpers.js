@@ -5,7 +5,7 @@ getPage = async(url) => {
     return getMonsters.data;
 }
 
-getMonster = async(url) => {
+getRandomMonsterByUrl = async(url) => {
     let getMonsters = null;
     let monsterArr = [];
     let index = null;
@@ -53,6 +53,34 @@ getMonster = async(url) => {
     return monsterArr[index];
 }
 
+/* 
+  A slightly different (slower) way of doing the same thing.
+  Fetch all monsters with a given type and fetch the count variable,
+  which is the total number of results, calling again the same endpoint
+  with limit set to the count:
+    url?type=<monster_type>&limit=<count>
+  this way we fetch all the results on a single page and simply return
+  this is slower but you are always calling the endpoint twice, no matter how many
+  pages there are.
+*/
+ getMonstersUsingLimitCount = async(url) => {
+  let getMonsters = null;
+  let index = null;
+
+  try {
+      getMonsters = await getPage(url);
+      const count = getMonsters.count;
+      index = Math.floor(Math.random() * count);
+      let newUrl = url + '&limit=' + count;
+      getMonsters = await getPage(newUrl);
+      return getMonsters.results[index];
+  } catch (err) {
+      console.error(err);
+  }
+
+}
+
 module.exports = {
-    getMonster
+  getRandomMonsterByUrl,
+  getMonstersUsingLimitCount
 };
