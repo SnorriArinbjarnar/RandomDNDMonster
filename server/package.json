@@ -1,11 +1,11 @@
 {
-  "name": "Controlant-React",
+  "name": "random_dnd_monster_server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --testPathPattern=server/",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "jest": {
     "testEnvironment": "node",
@@ -21,6 +21,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "jest": "^27.0.4"
+    "jest": "^27.0.4",
+    "nodemon": "^2.0.7"
   }
 }
