@@ -1,6 +1,7 @@
 import Header from './components/header/header';
 import React, {useState, useEffect} from 'react';
 import Monster from './components/monster/monster';
+import axios from 'axios';
 
 /* 
 App function is the single source of truth and passes
@@ -16,9 +17,9 @@ function App() {
   to populate the dropdown list
   */
   useEffect(() => {
-    fetch('/api/monster_types')
-    .then((res) => res.json())
-    .then((data) => setOptions(data))
+
+    axios.get('/api/monster_types')
+    .then((res) => setOptions(res.data))
     
   }, []);
 
@@ -28,9 +29,8 @@ function App() {
   */
   useEffect(() => {
     const fetchData = () => {
-      fetch(`/api/random_monster/${selected}`)
-      .then((res) => res.json())
-      .then((data) => setMonster(data))
+      axios.get(`/api/monster/${selected}`)
+      .then((res) => setMonster(res.data))
     }
 
     fetchData();
@@ -41,11 +41,17 @@ function App() {
   this one is used for the handleSubmit. When a new monster is selected in the dropdown list
   a new random monster is fetched, you can click the submit button to get another random monster of
   that same type.
+
+  When the page first loads it fires the submit
+  for some reason
+
+    TODO: Consider should it initially be set to None
+          or is it a good UX letting it
   */
+
   const fetchData = () => {
-    fetch(`/api/random_monster/${selected}`)
-    .then((res) => res.json())
-    .then((data) => setMonster(data))
+    axios.get(`/api/monster/${selected}`)
+      .then((res) => setMonster(res.data))
   }
 
   const handleSubmit = (evt) => {
