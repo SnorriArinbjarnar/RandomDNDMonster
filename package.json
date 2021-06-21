@@ -1,0 +1,24 @@
+{
+  "name": "random_dnd_monster_root",
+  "version": "1.0.0",
+  "description": "In a dungeons and dragons game there are many types of monsters.  Sometimes for your game you know what type of monster you want but can’t take a decision which to choose. Random Monster generator to the rescue.  Select monster type and a random monster will be fetched, click the button to get another monster of the same type.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd ./server && npm start\" \"cd ./client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SnorriArinbjarnar/RandomDNDMonster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SnorriArinbjarnar/RandomDNDMonster/issues"
+  },
+  "homepage": "https://github.com/SnorriArinbjarnar/RandomDNDMonster#readme",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}

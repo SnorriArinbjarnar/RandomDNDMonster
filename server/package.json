@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --testPathPattern=server/",
+    "test": "jest",
+    "test2": "jest --watchAll --testPathPattern=server/",
     "start": "nodemon index.js"
   },
   "jest": {
