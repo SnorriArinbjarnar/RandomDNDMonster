@@ -9,7 +9,9 @@ data down to child components
 */
 function App() {
   const [options, setOptions] = useState([]);
-  const [selected, setSelected] = useState("dragon");
+  const [crOptions, setCr] = useState([]);
+  //const [selected, setSelected] = useState("dragon");
+  const [selected, setSelected] = useState(["dragon","10"]);
   const [monster, setMonster] = useState({});
 
   /* 
@@ -22,19 +24,29 @@ function App() {
     .then((res) => setOptions(res.data))
     
   }, []);
+  useEffect(() => {
+
+    axios.get('/api/challenge_ratings')
+    .then((res) => setCr(res.data))
+    
+  }, []);
 
   /* 
   When user selects another monster from the
   dropdown list fetch a random monster of that type
-  */
+  
+  This changes the monster as soon as something else is picked on the
+  dropdown, do we want that or should it only change when button is clicked
+  
   useEffect(() => {
     const fetchData = () => {
-      axios.get(`/api/monster/${selected}`)
+      axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
       .then((res) => setMonster(res.data))
     }
 
     fetchData();
   }, [selected])
+*/
 
   /* 
   This is the same function as is inside the previous useEffect,
@@ -50,21 +62,30 @@ function App() {
   */
 
   const fetchData = () => {
-    axios.get(`/api/monster/${selected}`)
+    axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
       .then((res) => setMonster(res.data))
   }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setSelected([evt.target.monster.value, evt.target.monsterCR.value])
     fetchData();
   }
+
+  /*
+  TODO: Þarf að finna einfalda leið fyrir tvö select. 
+  Þegar annað breytist t.d monster verður Dragon þurfum við líka Challenge rating
+  þannig selected er á forminu:
+      setSelected(['dragon',10])
+  */
   const handleChange = (evt) => {
-    setSelected(evt.target.value);
+    //console.log(evt.target.monster);
+    //setSelected(evt.target);
   }
 
   return (
     <div className="container p-2" data-testid="app-container">
-      <Header title="Monster Finder" options={options} handleSubmit={handleSubmit} handleChange={handleChange} />
+      <Header title="Monster Finder" options={options} crOptions={crOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
       <Monster monster={monster} />
     </div>
   );
