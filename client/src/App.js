@@ -37,7 +37,7 @@ function App() {
   
   This changes the monster as soon as something else is picked on the
   dropdown, do we want that or should it only change when button is clicked
-  
+
   useEffect(() => {
     const fetchData = () => {
       axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
@@ -62,6 +62,10 @@ function App() {
   */
 
   const fetchData = () => {
+    /*
+     EDGE CASE:  When a monster with challenge ratings 1/4, 1/8
+     the url ends up being: /api/monster/type/1/4 which of course does not exist
+    */
     axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
       .then((res) => setMonster(res.data))
   }
