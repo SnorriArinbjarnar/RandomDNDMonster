@@ -11,9 +11,10 @@ function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
   //const [selected, setSelected] = useState("dragon");
-  const [selected, setSelected] = useState(["dragon","10"]);
+  const [selected, setSelected] = useState([]);
   const [monster, setMonster] = useState({});
-
+  const [isLoading, setIsLoading] = useState(false);
+  const toggle = () => setIsLoading(!isLoading);
   /* 
   When page loads fetch all the monster types
   to populate the dropdown list
@@ -66,14 +67,18 @@ function App() {
      EDGE CASE:  When a monster with challenge ratings 1/4, 1/8
      the url ends up being: /api/monster/type/1/4 which of course does not exist
     */
+    setIsLoading(true);
     axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
       .then((res) => setMonster(res.data))
+      .then(() => setIsLoading(false));
   }
 
   const handleSubmit = (evt) => {
+    
     evt.preventDefault();
     setSelected([evt.target.monster.value, evt.target.monsterCR.value])
     fetchData();
+    
   }
 
   /*
@@ -86,11 +91,23 @@ function App() {
     //console.log(evt.target.monster);
     //setSelected(evt.target);
   }
-
+  
   return (
     <div className="container p-2" data-testid="app-container">
       <Header title="Monster Finder" options={options} crOptions={crOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
-      <Monster monster={monster} />
+      
+      {/*<div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+  </div>*/}
+    {isLoading ? (
+      <div className="d-flex justify-content-center p-4">
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
+    </div>) : <Monster monster={monster} />}
+    
     </div>
   );
 }

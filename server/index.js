@@ -79,7 +79,6 @@ app.get("/api/monster/:type/:cr", async(req, res) => {
         cr = fractions[cr];
     }
     const url = 'https://api.open5e.com/monsters/?type=' + type + '&challenge_rating=' + cr;
-    console.log('url: ' + url);
     let monster = await getRandomMonsterByUrl(url);
 
     res.json(monster)
