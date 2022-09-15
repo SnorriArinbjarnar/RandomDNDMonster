@@ -1,7 +1,7 @@
 
 const express = require('express');
 const axios = require('axios');
-const { getRandomMonsterByUrl } = require('./utils/helpers');
+const { getRandomMonsterByUrl, getAbilityMod } = require('./utils/helpers');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -80,8 +80,11 @@ app.get("/api/monster/:type/:cr", async(req, res) => {
     }
     const url = 'https://api.open5e.com/monsters/?type=' + type + '&challenge_rating=' + cr;
     let monster = await getRandomMonsterByUrl(url);
-
-    res.json(monster)
+    console.log('monster going in: ', monster);
+    let copyMonster = await getAbilityMod(monster);
+    //console.log('monster coming out: ', copyMonster);
+    //console.log(copyMonster);
+    res.json(copyMonster)
 });
 
 app.listen(PORT, () => {

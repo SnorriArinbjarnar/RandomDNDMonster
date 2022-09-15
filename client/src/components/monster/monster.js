@@ -9,12 +9,13 @@ import Card from './card';
 */
 function Monster({monster}) {
     return (
-        <div id="monster_ctr" className="row d-flex justify-content-center p-4">
-            <div className="col-5 d-flex justify-content-center">
-                <Card monster_data={ [
+        <div id="monster_ctr" className="row d-flex justify-content-center align-items-center p-4">
+            <div className="col-sm-10 col-md-8 ">
+                {/*<Card monster_data={ [
                     {label: 'Armor Class ', data: monster.armor_class},
                     {label: 'Hit Points ', data: monster.hit_points}
-                ] } name={monster.name} type={monster.type} />
+                ] } name={monster.name} type={monster.type} />*/}
+                <Card monster_data={ monster } name={monster.name} type={monster.type} />
             </div>
         </div>
     );
