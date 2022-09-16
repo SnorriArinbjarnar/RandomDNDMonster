@@ -11,7 +11,7 @@ function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
   //const [selected, setSelected] = useState("dragon");
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(["aberration","5"]);
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const toggle = () => setIsLoading(!isLoading);

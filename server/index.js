@@ -15,6 +15,7 @@ const app = express();
 */
 app.get("/api/monster_types", (req, res) => {
     const types = [
+        {value: 'aberration', label: 'Aberration'},
         {value: 'dragon', label: 'Dragon'},
         {value: 'beast', label: 'Beast'},
         {value: 'celestial', label: 'Celestial'},
@@ -28,6 +29,7 @@ app.get("/api/monster_types", (req, res) => {
         {value: 'ooze', label: 'Ooze'},
         {value: 'undead', label: 'Undead'},
         {value: 'fiend', label: 'Fiend'}
+        
 
     ];
     res.json(types)
@@ -81,10 +83,20 @@ app.get("/api/monster/:type/:cr", async(req, res) => {
     const url = 'https://api.open5e.com/monsters/?type=' + type + '&challenge_rating=' + cr;
     let monster = await getRandomMonsterByUrl(url);
     console.log('monster going in: ', monster);
-    let copyMonster = await getAbilityMod(monster);
-    //console.log('monster coming out: ', copyMonster);
+    let copyMonster;
+    if(monster){
+        copyMonster = await getAbilityMod(monster);
+
+    }
+    console.log('monster coming out: ', copyMonster);
     //console.log(copyMonster);
-    res.json(copyMonster)
+    if(copyMonster){
+        res.json(copyMonster)
+    }
+    else {
+        res.json(monster)
+    }
+    
 });
 
 app.listen(PORT, () => {
