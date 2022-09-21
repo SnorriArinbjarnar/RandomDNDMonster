@@ -22,8 +22,8 @@ function Card({monster_data, name, type}) {
                             <p className="miscVal">{monster_data.armor_class}</p>
                         </div>
                     <div className="col-sm-5 ">
-                        <p className="mb-0 miscAttr"><b>Challenge rating</b></p>
-                        <p className="miscVal">{monster_data.challenge_rating}</p>
+                        <p className="mb-0 miscAttr"><b>Perception</b></p>
+                        <p className="miscVal">+{monster_data.perception}</p>
                     </div>
                     <div className="col-sm-3 ">
                         <p className="mb-0 miscAttr"><b>HP</b></p>
@@ -63,9 +63,25 @@ function Card({monster_data, name, type}) {
                             </div>
                         </section>
                       </li>
-                      <Collapse label="Speed" data={monster_data.speed ? monster_data.speed : '' } />
+                      <Collapse label="Speed"  data={monster_data.speed ? monster_data.speed : '' } mod="ft" />
                       <Collapse label="Senses" data={monster_data.senses ? monster_data.senses : '' } />
                       <Collapse label="Actions" data={monster_data.actions ? monster_data.actions : '' } />
+                      <Collapse label="Skills"  data={monster_data.skills ? monster_data.skills : '' } mod="+" />
+                      <Collapse label="Immunities and resistances" data={
+                          {
+                              "Damage Resistances" : monster_data.damage_resistances ? monster_data.damage_resistances : '',
+                              "Damage Immunities" : monster_data.damage_immunities ? monster_data.damage_immunities : '',
+                              "Condition Immunities" : monster_data.condition_immunities ? monster_data.condition_immunities : ''
+                          }
+                      } />
+                      <Collapse label="Languages" data={monster_data.languages ? monster_data.languages : ''} />
+                      {
+                          monster_data.special_abilities ? <Collapse label="Special Abilities" data={monster_data.special_abilities ? monster_data.special_abilities : ''} /> : ''
+                          
+                      }
+                      {
+                          monster_data.legendary_actions ? <Collapse label="Legendary Actions" data={monster_data.legendary_actions ? monster_data.legendary_actions : ''} /> : ''
+                      }
                     </ul>
         </div>
     );

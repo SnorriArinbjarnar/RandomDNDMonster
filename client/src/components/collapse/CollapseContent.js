@@ -2,7 +2,7 @@ import React from "react";
 import "../collapse/collapse.css";
 import "../collapse/content.css";
 
-function CollapseContent({data, type}){
+function CollapseContent({data, type, mod}){
     if (type === 2) {
         delete data["damage_dice"];
         delete data["attack_bonus"];
@@ -28,14 +28,42 @@ function CollapseContent({data, type}){
             })}
           </div>
         );
-      } else {
+      } 
+      else if(type === 4){
+        const regex = /(?<!piercing|bludgeoning)[,]/g
+        return (
+          <div className="text-center">
+            {Object.keys(data).map((key, index) => {
+              return (
+                <React.Fragment>
+                  <b>{key}</b>
+                  <ul className="list-group">
+                    {data[key]
+                      .split(";")
+                      .join(",")
+                      .split(regex)
+                      .map((d) => {
+                        return (
+                          <li className="list-group-item">
+                            {d}
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        );
+      }
+      else {
         // ef object
         return (
           <div className="text-center">
             {Object.keys(data).map((key, index) => {
               return (
                 <p>
-                  <b>{key}</b> : {data[key]}ft
+                  <b>{key}</b> : {data[key]}{mod}
                 </p>
               );
             })}

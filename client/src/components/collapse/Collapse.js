@@ -3,7 +3,7 @@ import "../collapse/collapse.css";
 import "./CollapseContent";
 import CollapseContent from './CollapseContent';
 
-function Collapse({label, data}) {
+function Collapse({label, data, mod}) {
     const [isOn, setOn] = useState(false);
     const handleClick = (evt) => {
         setOn(!isOn);
@@ -12,7 +12,11 @@ function Collapse({label, data}) {
     const dataType = (data) => {
         if (typeof data === "string") {
         return 1;
-        } else {
+        } 
+        else if(data.hasOwnProperty("Damage Resistances")){
+            return 4;
+        }
+        else {
         if (Array.isArray(data)) {
             return 2;
         } else {
@@ -27,7 +31,7 @@ function Collapse({label, data}) {
           {label}
         </button>
         <div className={isOn ? "content show text-justify" : "content text-left"}>
-          <CollapseContent data={data} type={dataType(data)} />
+          <CollapseContent data={data} type={dataType(data)} mod={mod} />
         </div>
       </li>
     );
