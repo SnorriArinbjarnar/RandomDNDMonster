@@ -1,11 +1,14 @@
 import React from 'react';
+import Collapse from "../collapse/Collapse";
 
 
 function Card({monster_data, name, type}) {
     let cardStyle = {
         width: '100%'
     }
+    console.log(monster_data)
     return (
+        
         <div className="card" style={ cardStyle} >
             <div className="card-header text-center">
                 <h5 className="card-title mb-0">{name}</h5>
@@ -60,6 +63,9 @@ function Card({monster_data, name, type}) {
                             </div>
                         </section>
                       </li>
+                      <Collapse label="Speed" data={monster_data.speed ? monster_data.speed : '' } />
+                      <Collapse label="Senses" data={monster_data.senses ? monster_data.senses : '' } />
+                      <Collapse label="Actions" data={monster_data.actions ? monster_data.actions : '' } />
                     </ul>
         </div>
     );
