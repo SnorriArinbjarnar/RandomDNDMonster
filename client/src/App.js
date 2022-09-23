@@ -1,5 +1,5 @@
 import Header from './components/header/header';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Monster from './components/monster/monster';
 import axios from 'axios';
 
@@ -15,6 +15,7 @@ function App() {
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const toggle = () => setIsLoading(!isLoading);
+  const ref = useRef(true);
   /* 
   When page loads fetch all the monster types
   to populate the dropdown list
@@ -31,6 +32,14 @@ function App() {
     .then((res) => setCr(res.data))
     
   }, []);
+
+  useEffect(() => {
+    const firstRender = ref.current;
+    if(firstRender){
+      ref.current = false;
+      fetchData();
+    }
+  })
 
   /* 
   When user selects another monster from the
