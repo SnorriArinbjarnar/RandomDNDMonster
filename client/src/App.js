@@ -11,7 +11,7 @@ function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
   //const [selected, setSelected] = useState("dragon");
-  const [selected, setSelected] = useState(["aberration","5"]);
+  const [selected, setSelected] = useState(["aberration","0"]);
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const toggle = () => setIsLoading(!isLoading);
@@ -83,12 +83,8 @@ function App() {
   }
 
   const handleSubmit = (evt) => {
-    
     evt.preventDefault();
-    setSelected([evt.target.monster.value, evt.target.monsterCR.value])
     fetchData();
-    
-    
   }
   
   /*
@@ -98,8 +94,13 @@ function App() {
       setSelected(['dragon',10])
   */
   const handleChange = (evt) => {
-    //console.log(evt.target.monster);
-    //setSelected(evt.target);
+    if(evt.target.name === 'monster'){
+      setSelected([evt.target.value, selected[1]]);
+    }
+    else {
+      setSelected([selected[0], evt.target.value]);
+    }
+    
   }
   
   return (

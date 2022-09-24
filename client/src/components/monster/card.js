@@ -6,7 +6,7 @@ function Card({monster_data, name, type}) {
     let cardStyle = {
         width: '100%'
     }
-    console.log(monster_data)
+    //console.log(monster_data)
     
     return (
         
@@ -23,8 +23,8 @@ function Card({monster_data, name, type}) {
                             <p className="miscVal">{monster_data.armor_class}</p>
                         </div>
                     <div className="col-sm-5 ">
-                        <p className="mb-0 miscAttr"><b>Perception</b></p>
-                        <p className="miscVal">+{monster_data.perception}</p>
+                        <p className="mb-0 miscAttr"><b>Challenge Rating</b></p>
+                        <p className="miscVal">{monster_data.challenge_rating}</p>
                     </div>
                     <div className="col-sm-3 ">
                         <p className="mb-0 miscAttr"><b>HP</b></p>

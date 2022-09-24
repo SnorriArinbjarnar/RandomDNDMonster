@@ -8,12 +8,12 @@ import Card from './card';
     properties
 */
 function Monster({monster}) {
-    console.log('MONSTER: ', monster);
+    
     return (
         <div id="monster_ctr" className="row d-flex justify-content-center align-items-center p-4">
             <div className="col-sm-10 col-md-8 ">
                 
-                { monster ? <Card monster_data={ monster } name={monster.name} type={monster.type} /> : <p className="h4 text-center">No monsters with that CR</p>}
+                { monster ? <Card monster_data={ monster } name={monster.name} type={monster.type} /> : <p className="h4 text-center">No monsters with that CR</p> }
             </div>
         </div>
     );
