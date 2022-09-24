@@ -7,6 +7,7 @@ function Card({monster_data, name, type}) {
         width: '100%'
     }
     console.log(monster_data)
+    
     return (
         
         <div className="card" style={ cardStyle} >

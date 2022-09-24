@@ -88,8 +88,9 @@ function App() {
     setSelected([evt.target.monster.value, evt.target.monsterCR.value])
     fetchData();
     
+    
   }
-
+  
   /*
   TODO: Þarf að finna einfalda leið fyrir tvö select. 
   Þegar annað breytist t.d monster verður Dragon þurfum við líka Challenge rating
@@ -115,7 +116,7 @@ function App() {
         <div className="spinner-border" role="status">
           <span className="sr-only"></span>
         </div>
-    </div>) : <Monster monster={monster} />}
+    </div>) :   <Monster monster={monster}  />}
     
     </div>
   );

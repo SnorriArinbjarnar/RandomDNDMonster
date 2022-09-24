@@ -62,6 +62,7 @@ getRandomMonsterByUrl = async(url) => {
     try {
         getMonsters = await getPage(url);
         const count = getMonsters.count;
+       
         index = Math.floor(Math.random() * count);
         /* 
           if maximum number of entries is the same as the results array it means 

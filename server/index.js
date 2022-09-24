@@ -82,14 +82,13 @@ app.get("/api/monster/:type/:cr", async(req, res) => {
     }
     const url = 'https://api.open5e.com/monsters/?type=' + type + '&challenge_rating=' + cr;
     let monster = await getRandomMonsterByUrl(url);
-    console.log('monster going in: ', monster);
+  
     let copyMonster;
     if(monster){
         copyMonster = await getAbilityMod(monster);
 
     }
-    console.log('monster coming out: ', copyMonster);
-    //console.log(copyMonster);
+    
     if(copyMonster){
         res.json(copyMonster)
     }
