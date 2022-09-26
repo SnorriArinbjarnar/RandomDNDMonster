@@ -9,7 +9,8 @@ In a dungeons and dragons game there are many types of monsters.  Sometimes for 
  [![Node][Node.js]][Node-url]
  [![Express][express]][express-url]
  [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- 3rd Party API Used: [Api Root – Django REST framework (open5e.com)](https://api.open5e.com/)
+  [![Open5e][open5e]][open5e-url]
+- 3rd Party API Used: [open5e](https://api.open5e.com/)
 # Getting Started
 ## Prerequisites
 - npm
@@ -35,7 +36,8 @@ npm start
 [Bootstrap-url]: https://getbootstrap.com
 [Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [Node-url]: https://nodejs.org
-
 [express]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
 [express-url]: https://expressjs.com
+[open5e]: https://img.shields.io/badge/Open5e-FF6F00?style=for-the-badge&logo=open5e&logoColor=white
+[open5e-url]: https://api.open5e.com/
 
