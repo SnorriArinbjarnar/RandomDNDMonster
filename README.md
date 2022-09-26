@@ -27,10 +27,6 @@ npm install
 ```node
 npm start
 ```
-- Open another terminal window, navigate into the client directory and again run
-```node
-cd client
-npm start
-```
+
 
 
