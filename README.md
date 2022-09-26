@@ -10,7 +10,8 @@ In a dungeons and dragons game there are many types of monsters.  Sometimes for 
  [![Express][express]][express-url]
  [![Bootstrap][Bootstrap.com]][Bootstrap-url]
   [![Open5e][open5e]][open5e-url]
-- 3rd Party API Used: [open5e](https://api.open5e.com/)
+- 3rd Party API Used: 
+[![Open5e][open5e]][open5e-url]
 # Getting Started
 ## Prerequisites
 - npm
