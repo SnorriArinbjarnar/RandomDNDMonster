@@ -64,6 +64,21 @@ function Card({monster_data, name, type}) {
                         </section>
                       </li>
                       <Collapse label="Speed"  data={monster_data.speed ? monster_data.speed : '' } mod="ft" type="objAllInfo" />
+                      { (monster_data.strength_save || 
+                        monster_data.dexterity_save || 
+                        monster_data.constitution_save || 
+                        monster_data.intelligence_save || 
+                        monster_data.wisdom_save || 
+                        monster_data.charisma_save) ? <Collapse label="Saving Throws" data={
+                            {
+                                ...(monster_data.strength_save && {'STR' : monster_data.strength_save}),
+                                ...(monster_data.dexterity_save && {'DEX' : monster_data.dexterity_save}),
+                                ...(monster_data.constitution_save && {'CON' : monster_data.constitution_save}),
+                                ...(monster_data.intelligence_save && {'INT' : monster_data.intelligence_save}),
+                                ...(monster_data.wisdom_save && {'WIS' : monster_data.wisdom_save}),
+                                ...(monster_data.charisma_save && {'CHA' : monster_data.charisma_save})
+                              }
+                        } mod="+" type="objAllInfo" /> :  ''}
                       { monster_data.skills ? <Collapse label="Skills"  data={monster_data.skills ? monster_data.skills : '' } mod="+" type="objAllInfo" /> : '' }
                       { monster_data.senses ? <Collapse label="Senses" data={monster_data.senses ? monster_data.senses : '' } mod="" type="objString" /> : '' }
                       { monster_data.languages ? <Collapse label="Languages"  data={monster_data.languages ? monster_data.languages : '' } mod="" type="objString" /> : '' }
@@ -87,6 +102,7 @@ function Card({monster_data, name, type}) {
                       {
                           monster_data.legendary_actions ? <Collapse label="Legendary Actions" data={monster_data.legendary_actions ? monster_data.legendary_actions : ''} mod="" type="objArrValInfo" /> : ''
                       }
+
                     </ul>
         </div>
     );
