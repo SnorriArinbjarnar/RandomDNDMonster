@@ -14,7 +14,6 @@ function App() {
   const [selected, setSelected] = useState(["aberration","0"]);
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const toggle = () => setIsLoading(!isLoading);
   const ref = useRef(true);
   /* 
   When page loads fetch all the monster types
@@ -48,28 +47,7 @@ function App() {
   This changes the monster as soon as something else is picked on the
   dropdown, do we want that or should it only change when button is clicked
 
-  useEffect(() => {
-    const fetchData = () => {
-      axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
-      .then((res) => setMonster(res.data))
-    }
-
-    fetchData();
-  }, [selected])
 */
-
-  /* 
-  This is the same function as is inside the previous useEffect,
-  this one is used for the handleSubmit. When a new monster is selected in the dropdown list
-  a new random monster is fetched, you can click the submit button to get another random monster of
-  that same type.
-
-  When the page first loads it fires the submit
-  for some reason
-
-    TODO: Consider should it initially be set to None
-          or is it a good UX letting it
-  */
 
   const fetchData = () => {
     /*
@@ -87,12 +65,6 @@ function App() {
     fetchData();
   }
   
-  /*
-  TODO: Þarf að finna einfalda leið fyrir tvö select. 
-  Þegar annað breytist t.d monster verður Dragon þurfum við líka Challenge rating
-  þannig selected er á forminu:
-      setSelected(['dragon',10])
-  */
   const handleChange = (evt) => {
     if(evt.target.name === 'monster'){
       setSelected([evt.target.value, selected[1]]);
@@ -107,11 +79,6 @@ function App() {
     <div className="container p-2" data-testid="app-container">
       <Header title="Monster Finder" options={options} crOptions={crOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
       
-      {/*<div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="sr-only"></span>
-        </div>
-  </div>*/}
     {isLoading ? (
       <div className="d-flex justify-content-center p-4">
         <div className="spinner-border" role="status">
