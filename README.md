@@ -5,6 +5,7 @@
 In a dungeons and dragons game there are many types of monsters.  Sometimes for your game you know what type of monster you want but can’t take a decision which to choose. Random Monster generator to the rescue.  Select monster type and challenge rating and a random monster will be fetched, click the button to get another monster of the same type.
 
 # Technical Stack
+* [React][React.js]][Next-url]
 - React (with hooks)
 - Node with Express for backend
 - Bootstrap to make things prettier
