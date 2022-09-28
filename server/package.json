@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test2": "jest --watchAll --testPathPattern=server/",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev" : "nodemon index.js"
   },
   "jest": {
     "testEnvironment": "node",
