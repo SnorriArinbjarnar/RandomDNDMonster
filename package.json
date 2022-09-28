@@ -9,7 +9,8 @@
     "start" : "node server/index.js",
     "build" : "cd client && npm install && npm run build",
     "test:backend": "cd ./server && npm test",
-    "test:frontend":"cd ./client && npm test"
+    "test:frontend":"cd ./client && npm test",
+    "postinstall":"npm install --prefix ./client && npm install --prefix server"
   },
   "repository": {
     "type": "git",
