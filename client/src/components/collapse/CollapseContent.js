@@ -14,7 +14,10 @@ function CollapseContent({data, type, mod}){
                     {data[key]
                       .split(";")
                       .join(",")
-                      .split(/(?<!piercing|bludgeoning)[,]/g)
+                      .replace('bludgeoning,','bludgeoning.')
+                      .replace('piercing,','piercing.')
+                      .split(',')
+                      .map( d => d.replace(/[\.]/g, ','))
                       .map((d) => {
                         return <li className="list-group-item">{d}</li>;
                       })}
