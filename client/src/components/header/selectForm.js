@@ -22,6 +22,14 @@ export default function SelectForm(props){
                 })}
                 </select>
             </div>
+            <div className="form-group p-2">
+                <label htmlFor="monsterEnv">Choose an Environment:</label>
+                <select name="monsterEnv" className="form-control" id="monsterEnv" onChange={props.handleChange} data-testid="select-tag-env">
+                {props.envOptions.map( (item) => {
+                    return (<option data-testid="select-option-env" key={'env-'+item.value} value={item.value}>{item.label}</option>);
+                })}
+                </select>
+            </div>
             <Button label="Get Monster" classes="btn btn-primary" type="submit" handleClick={null} />
         </form>
     );

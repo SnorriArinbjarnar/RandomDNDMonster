@@ -10,8 +10,9 @@ data down to child components
 function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
+  const [envOptions, setEnv] = useState([]);
   //const [selected, setSelected] = useState("dragon");
-  const [selected, setSelected] = useState(["aberration","0"]);
+  const [selected, setSelected] = useState(["aberration","0", "all"]);
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const ref = useRef(true);
@@ -31,7 +32,12 @@ function App() {
     .then((res) => setCr(res.data))
     
   }, []);
+  useEffect(() => {
 
+    axios.get('/api/env')
+    .then((res) => setEnv(res.data))
+    
+  }, []);
   useEffect(() => {
     const firstRender = ref.current;
     if(firstRender){
@@ -55,7 +61,7 @@ function App() {
      the url ends up being: /api/monster/type/1/4 which of course does not exist
     */
     setIsLoading(true);
-    axios.get(`/api/monster/${selected[0]}/${selected[1]}`)
+    axios.get(`/api/monster/${selected[0]}/${selected[1]}/${selected[2]}`)
       .then((res) => setMonster(res.data))
       .then(() => setIsLoading(false));
   }
@@ -69,6 +75,9 @@ function App() {
     if(evt.target.name === 'monster'){
       setSelected([evt.target.value, selected[1]]);
     }
+    else if(evt.target.name === 'monsterEnv') {
+      setSelected([selected[0], selected[1], evt.target.value]);
+    }
     else {
       setSelected([selected[0], evt.target.value]);
     }
@@ -77,7 +86,7 @@ function App() {
   
   return (
     <div className="container p-2" data-testid="app-container">
-      <Header title="Monster Finder" options={options} crOptions={crOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
+      <Header title="Monster Finder" options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
       
     {isLoading ? (
       <div className="d-flex justify-content-center p-4">
