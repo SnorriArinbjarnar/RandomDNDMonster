@@ -125,6 +125,7 @@ app.get("/api/monster/:type/:cr/:env", async(req, res) => {
     };
     const type = req.params.type;
     const env = req.params.env;
+    //console.log('Inside api/monster endpoint env is: ', env);
     let cr = req.params.cr;
     if(fractions[cr]){
         cr = fractions[cr];

@@ -8,7 +8,7 @@ function Header({title, options, crOptions, envOptions, handleSubmit, handleChan
                 <h1>{title}</h1>
             </div>
             <div className="col-12  d-flex flex-column justify-content-center align-items-center">
-                <SelectForm options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange}/>
+                <SelectForm options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
             </div>
         </header>
     );

@@ -11,8 +11,12 @@ function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
   const [envOptions, setEnv] = useState([]);
-  //const [selected, setSelected] = useState("dragon");
-  const [selected, setSelected] = useState(["aberration","0", "all"]);
+  //const [selected, setSelected] = useState(["aberration","0", "all"]);
+  const [selectedObj, setSelectedObj] = useState({
+    monster : 'aberration',
+    monsterCR : '0',
+    monsterEnv : 'all'
+  })
   const [monster, setMonster] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const ref = useRef(true);
@@ -61,32 +65,66 @@ function App() {
      the url ends up being: /api/monster/type/1/4 which of course does not exist
     */
     setIsLoading(true);
-    axios.get(`/api/monster/${selected[0]}/${selected[1]}/${selected[2]}`)
+    axios.get(`/api/monster/${selectedObj['monster']}/${selectedObj['monsterCR']}/${selectedObj['monsterEnv']}`)
       .then((res) => setMonster(res.data))
       .then(() => setIsLoading(false));
   }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    //console.log('Before submit in Enviornment: ', selected[2] );
+    //console.log('Before submit in Monster: ', selected[0] );
+    //console.log('Before submit in CR: ', selected[1] );
     fetchData();
   }
   
   const handleChange = (evt) => {
-    if(evt.target.name === 'monster'){
-      setSelected([evt.target.value, selected[1]]);
+    
+    /*if(evt.target.name === 'monster'){
+
+      setSelectedObj({
+        ...selectedObj,
+        monster : evt.target.value
+      });
     }
     else if(evt.target.name === 'monsterEnv') {
-      setSelected([selected[0], selected[1], evt.target.value]);
+      setSelectedObj({
+        ...selectedObj,
+        monsterEnv : evt.target.value
+      });
     }
-    else {
-      setSelected([selected[0], evt.target.value]);
-    }
+    else if (evt.target.name === 'monsterCR') {
+      setSelectedObj({
+        ...selectedObj,
+        monsterCR : evt.target.value
+      });
+    }*/
+
+
+   const value = evt.target.value;
+   setSelectedObj({
+     ...selectedObj,
+     [evt.target.name] : value
+   })
+   
+
+
+/*
+    let value = evt.target.value;
+    let name = evt.target.name;
+    setSelected({
+      ...selected,
+      [name] : value
+    })*/
+    
     
   }
+
+ 
   
   return (
     <div className="container p-2" data-testid="app-container">
-      <Header title="Monster Finder" options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange} />
+      <Header title="Monster Finder" options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange}  />
       
     {isLoading ? (
       <div className="d-flex justify-content-center p-4">

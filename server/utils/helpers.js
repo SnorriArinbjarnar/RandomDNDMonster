@@ -56,6 +56,8 @@ getAbilityMod = async(monster) => {
 }
 
 filterMonstersByEnvironment = async(monsterArr, env) => {
+  //console.log('MONSTER ARR: ', monsterArr);
+  console.log('ENV: ', env);
   const environments = {
     'arctic' : [
       'commoner',
@@ -95,6 +97,7 @@ filterMonstersByEnvironment = async(monsterArr, env) => {
     ]
   }
 
+  
   if(env === 'all'){
     return monsterArr;
   }
@@ -102,6 +105,7 @@ filterMonstersByEnvironment = async(monsterArr, env) => {
   const result = monsterArr.filter( d => {
     return environments[env].includes(d.slug);
   })
+  //console.log('Result: ', result);
   
   return result;
 }
@@ -168,6 +172,7 @@ getRandomMonsterByUrl = async(url) => {
 getMonstersUsingLimitCount = async(url, env) => {
   let getMonsters = null;
   let index = null;
+  console.log('URL: ', url);
 
   try {
       getMonsters = await getPage(url);
@@ -181,7 +186,7 @@ getMonstersUsingLimitCount = async(url, env) => {
       
       
       index = Math.floor(Math.random() * getMonsters.length);
-      console.log(getMonsters);
+      //console.log(getMonsters);
       
       return getMonsters[index];
   } catch (err) {
