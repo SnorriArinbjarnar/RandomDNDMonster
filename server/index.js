@@ -77,6 +77,12 @@ app.get("/api/env", (req, res) => {
     const environments = [
         {value: 'all', label: 'All'},
         {value: 'arctic', label: 'Arctic'},
+        {value: 'coastal', label: 'Coastal'},
+        {value: 'desert', label: 'Desert'},
+        {value: 'forest', label: 'Forest'},
+        {value: 'grassland', label: 'Grassland'},
+        {value: 'hill', label: 'Hill'},
+        {value: 'mountain', label: 'Mountain'},
     ];
     res.json(environments)
 });
@@ -125,7 +131,6 @@ app.get("/api/monster/:type/:cr/:env", async(req, res) => {
     };
     const type = req.params.type;
     const env = req.params.env;
-    //console.log('Inside api/monster endpoint env is: ', env);
     let cr = req.params.cr;
     if(fractions[cr]){
         cr = fractions[cr];

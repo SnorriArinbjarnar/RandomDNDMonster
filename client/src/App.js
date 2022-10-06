@@ -11,7 +11,6 @@ function App() {
   const [options, setOptions] = useState([]);
   const [crOptions, setCr] = useState([]);
   const [envOptions, setEnv] = useState([]);
-  //const [selected, setSelected] = useState(["aberration","0", "all"]);
   const [selectedObj, setSelectedObj] = useState({
     monster : 'aberration',
     monsterCR : '0',
@@ -72,51 +71,17 @@ function App() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    //console.log('Before submit in Enviornment: ', selected[2] );
-    //console.log('Before submit in Monster: ', selected[0] );
-    //console.log('Before submit in CR: ', selected[1] );
     fetchData();
   }
   
   const handleChange = (evt) => {
     
-    /*if(evt.target.name === 'monster'){
-
-      setSelectedObj({
-        ...selectedObj,
-        monster : evt.target.value
-      });
-    }
-    else if(evt.target.name === 'monsterEnv') {
-      setSelectedObj({
-        ...selectedObj,
-        monsterEnv : evt.target.value
-      });
-    }
-    else if (evt.target.name === 'monsterCR') {
-      setSelectedObj({
-        ...selectedObj,
-        monsterCR : evt.target.value
-      });
-    }*/
-
 
    const value = evt.target.value;
    setSelectedObj({
      ...selectedObj,
      [evt.target.name] : value
    })
-   
-
-
-/*
-    let value = evt.target.value;
-    let name = evt.target.name;
-    setSelected({
-      ...selected,
-      [name] : value
-    })*/
-    
     
   }
 
