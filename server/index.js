@@ -83,6 +83,10 @@ app.get("/api/env", (req, res) => {
         {value: 'grassland', label: 'Grassland'},
         {value: 'hill', label: 'Hill'},
         {value: 'mountain', label: 'Mountain'},
+        {value: 'swamp', label: 'Swamp'},
+        {value: 'underdark', label: 'Underdark'},
+        {value: 'underwater', label: 'Underwater'},
+        {value: 'urban', label: 'Urban'}
     ];
     res.json(environments)
 });
