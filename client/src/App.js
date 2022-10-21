@@ -1,4 +1,5 @@
 import Header from './components/header/header';
+import Footer from './components/footer/footer';
 import React, {useState, useEffect, useRef} from 'react';
 import Monster from './components/monster/monster';
 import axios from 'axios';
@@ -88,6 +89,7 @@ function App() {
  
   
   return (
+    <div>
     <div className="container p-2" data-testid="app-container">
       <Header title="Monster Finder" options={options} crOptions={crOptions} envOptions={envOptions} handleSubmit={handleSubmit} handleChange={handleChange}  />
       
@@ -99,6 +101,9 @@ function App() {
     </div>) :   <Monster monster={monster}  />}
     
     </div>
+    <Footer />
+    </div>
+    
   );
 }
 
