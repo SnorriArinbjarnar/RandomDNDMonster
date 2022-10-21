@@ -11,7 +11,7 @@ function Collapse({label, data, mod, type}) {
 
   
     return (
-        <li className="list-group-item p-0">
+        <li className="list-group-item border-color border-0 p-0">
         <button type="button" className=" collapsible w100" onClick={handleClick}>
           {label}
         </button>

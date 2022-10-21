@@ -3,7 +3,7 @@ import SelectForm from './selectForm';
 
 function Header({title, options, crOptions, envOptions, handleSubmit, handleChange}) {
     return (
-        <header className="row text-center">
+        <header className="row text-center text-white p-2 mb-2">
             <div className="col-12">
                 <h1>{title}</h1>
             </div>

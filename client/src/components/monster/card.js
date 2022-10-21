@@ -1,5 +1,6 @@
 import React from 'react';
 import Collapse from "../collapse/Collapse";
+import './card.css';
 
 
 function Card({monster_data, name, type}) {
@@ -9,13 +10,13 @@ function Card({monster_data, name, type}) {
     
     return (
         
-        <div className="card" style={ cardStyle} >
+        <div className="card cardExtra text-white bg-dark" style={ cardStyle} >
             <div className="card-header text-center">
                 <h5 className="card-title mb-0">{name}</h5>
                 <small className="text-muted">{monster_data.size} {monster_data.alignment} {type}</small>
             </div>
             <div className="card-body">
-                <section className="misc ">
+                <section className="misc">
                     <div className="row text-center">
                         <div className="col-sm-3 ">
                             <p className="mb-0 miscAttr"><b>AC</b></p>
@@ -33,7 +34,7 @@ function Card({monster_data, name, type}) {
             </section>  
             </div>
             <ul className="list-group list-group-flush">
-                      <li className="list-group-item p-2">
+                      <li className="list-group-item list-group-item-dark border-0 p-2">
                         <section className="stats">
                             <div className="row text-center">
                                 <div className="col-4 col-md-2">

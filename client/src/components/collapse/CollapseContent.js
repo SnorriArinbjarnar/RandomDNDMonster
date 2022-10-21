@@ -1,6 +1,5 @@
 import React from "react";
 import "../collapse/collapse.css";
-import "../collapse/content.css";
 
 function CollapseContent({data, type, mod}){
     if (type === "objStringInfo") {
@@ -59,7 +58,7 @@ function CollapseContent({data, type, mod}){
           );
       }
       else {
-        // something
+       
        
       }
     
