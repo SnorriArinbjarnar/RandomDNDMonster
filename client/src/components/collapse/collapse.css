@@ -23,7 +23,7 @@
     width: 100%;
     height: 100%;
     background: rgb(16,16,17);
-    background-image: linear-gradient(90deg, rgb(1,1,15) 0%, rgba(80, 80, 86, 0.5) 51%, rgba(204, 206, 212, 0.8) 100%), url('../../images/background_texture.png');
+    background-image: linear-gradient(90deg, rgb(1,1,15) 0%, rgba(80, 80, 86, 0.5) 51%, rgba(204, 206, 212, 0.8) 100%), url('../../images/texture_small.png');
     background-size: cover;
 }
 
@@ -51,7 +51,7 @@ button:focus {
     width: 100%;
     height: 100%;
     background: rgb(16,16,17);
-    background-image: linear-gradient(90deg, rgb(219, 219, 225) 0%, rgba(80, 80, 86, 0.5) 51%, rgba(204, 206, 212, 0.8) 100%), url('../../images/background_texture.png');
+    background-image: linear-gradient(90deg, rgb(219, 219, 225) 0%, rgba(80, 80, 86, 0.5) 51%, rgba(204, 206, 212, 0.8) 100%), url('../../images/texture_small.png');
     background-size: cover;
     pointer-events: none;
   }
