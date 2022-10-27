@@ -4,12 +4,12 @@ import "../collapse/collapse.css";
 function CollapseContent({data, type, mod}){
     if (type === "objStringInfo") {
         return (
-          <div>
+          <div className="text-center">
             {Object.keys(data).map((key, index) => {
               return (
                 <React.Fragment>
                   <b>{key}</b>
-                  <ul className="list-group">
+                  <ul style={{listStyleType: "none"}}>
                     {data[key]
                       .split(";")
                       .join(",")
@@ -18,7 +18,7 @@ function CollapseContent({data, type, mod}){
                       .split(',')
                       .map( d => d.replace(/[\.]/g, ','))
                       .map((d) => {
-                        return <li className="list-group-item">{d}</li>;
+                        return <li >{d}</li>;
                       })}
                   </ul>
                 </React.Fragment>
