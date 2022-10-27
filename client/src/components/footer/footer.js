@@ -7,7 +7,7 @@ function Footer() {
           <p>Powered by <a class="text-white" href="http://open5e.com">Open5e</a></p>
           <p>
           Content provided under the 
-          <a class="text-white" href="https://open5e.com/legal/">OGL 1.0a</a>
+          <a class="text-white" href="https://open5e.com/legal/"> OGL 1.0a</a>
             </p>
         </div>
       </footer>
