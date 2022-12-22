@@ -2,6 +2,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import React, {useState, useEffect, useRef} from 'react';
 import Monster from './components/monster/monster';
+import './index.css';
 import axios from 'axios';
 
 /* 
